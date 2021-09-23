@@ -1,4 +1,5 @@
 import { Message } from "discord.js";
+import { helpMessage } from "./constants";
 
 const COMMAND_REGEX: RegExp = /^!![a-zA-Z]+/;
 
@@ -21,13 +22,13 @@ export const commandHandler = (msg: Message) => {
     case "!!show":
       msg.channel.send("this is show play list function");
       break;
-    case "!!help":
-      msg.channel.send("this is help function");
-      break;
     case "!!clear":
       msg.channel.send("this is clear music queue function");
       break;
+    case "!!help":
+      msg.channel.send(helpMessage);
+      break;
     default:
-      msg.channel.send("this is help function");
+      msg.channel.send(helpMessage);
   }
 };
