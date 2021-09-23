@@ -1,0 +1,8 @@
+{
+  "name": "secretjuju-music",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SecretJuJu/secretjuju-music-discord-bot.git",
+  "author": "SeungBo <47034129+SecretJuJu@users.noreply.github.com>",
+  "license": "MIT"
+}
