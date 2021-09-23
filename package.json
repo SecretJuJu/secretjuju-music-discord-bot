@@ -4,5 +4,10 @@
   "main": "index.js",
   "repository": "https://github.com/SecretJuJu/secretjuju-music-discord-bot.git",
   "author": "SeungBo <47034129+SecretJuJu@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0"
+  }
 }
