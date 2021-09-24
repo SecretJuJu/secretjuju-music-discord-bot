@@ -1,13 +1,10 @@
-import { Client, Intents } from "discord.js";
 import * as dotenv from "dotenv";
-
+import client from "discord-client";
 import { isCommand, commandHandler } from "./command-manager";
 
 dotenv.config();
 
-const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-});
+client.on("ready", () => console.log("ready"));
 
 client.on("messageCreate", async (msg) => {
   if (isCommand(msg.content)) {
