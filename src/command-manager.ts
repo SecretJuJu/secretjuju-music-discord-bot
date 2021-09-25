@@ -1,5 +1,7 @@
 import { Message } from "discord.js";
+
 import { helpMessage } from "./constants";
+import play from "./actions/play";
 
 const COMMAND_REGEX: RegExp = /^!![a-zA-Z]+/;
 
@@ -7,9 +9,10 @@ export const isCommand = (msgContent: string) => {
   return COMMAND_REGEX.test(msgContent);
 };
 export const commandHandler = (msg: Message) => {
-  switch (msg.content) {
+  const commandType = msg.content.split(" ")[0];
+  switch (commandType) {
     case "!!play":
-      msg.channel.send("this is play music right now function");
+      play(msg);
       break;
     case "!!add":
       msg.channel.send("this is add music into queue function");

@@ -6,7 +6,7 @@ dotenv.config();
 
 client.on("ready", () => console.log("ready"));
 
-client.on("messageCreate", async (msg) => {
+client.on("message", async (msg) => {
   if (isCommand(msg.content)) {
     commandHandler(msg);
   }
