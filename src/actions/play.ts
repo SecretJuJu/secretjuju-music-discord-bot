@@ -37,7 +37,7 @@ const getVoiceConnection = async (
   }
 };
 
-const play = async (msg: Message) => {
+const playListHandler = async (msg: Message) => {
   const voiceConnection = await getVoiceConnection(msg);
 
   if (voiceConnection === null) {
@@ -67,4 +67,4 @@ const play = async (msg: Message) => {
   playList.startPlayList();
 };
 
-export default play;
+export default playListHandler;

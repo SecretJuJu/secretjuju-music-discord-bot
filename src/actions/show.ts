@@ -1,7 +1,7 @@
 import { Guild, Message } from "discord.js";
 import { PlayListMap } from "../play-list";
 
-const showPlayList = async (msg: Message) => {
+const showPlayListHandler = async (msg: Message) => {
   const DefaultGuideMessage = `\`해당 채널에 등록된 플레이리스트가 없습니다. \``;
 
   const guild: Guild | null = msg.guild;
@@ -29,4 +29,4 @@ const showPlayList = async (msg: Message) => {
   return msg.channel.send(guideString);
 };
 
-export default showPlayList;
+export default showPlayListHandler;

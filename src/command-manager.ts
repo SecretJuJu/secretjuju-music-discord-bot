@@ -1,8 +1,7 @@
+import { playListHandler, showPlayListHandler, addMusicHandler } from "actions";
 import { Message, TextChannel } from "discord.js";
 
 import { helpMessage } from "./constants";
-import play from "./actions/play";
-import showPlayList from "actions/show";
 import { PlayList, PlayListMap } from "./play-list";
 
 const COMMAND_REGEX: RegExp = /^!![a-zA-Z]+/;
@@ -28,10 +27,10 @@ export const commandHandler = (msg: Message) => {
 
   switch (commandType) {
     case "!!play":
-      play(msg);
+      playListHandler(msg);
       break;
     case "!!add":
-      // addMusicToPlayList(msg)
+      addMusicHandler(msg);
       break;
     case "!!insert":
       msg.channel.send("this is insert music into queue function");
@@ -39,7 +38,7 @@ export const commandHandler = (msg: Message) => {
     case "!!delete":
       msg.channel.send("this is delete music by number function");
     case "!!show":
-      showPlayList(msg);
+      showPlayListHandler(msg);
       break;
     case "!!clear":
       msg.channel.send("this is clear music queue function");
