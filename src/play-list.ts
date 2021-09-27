@@ -161,6 +161,10 @@ export class PlayList {
   skipMusic() {
     this.dispatcher?.destroy();
   }
+  toggleLoop() {
+    this.isLoop = this.isLoop;
+    return this.isLoop;
+  }
 
   getVoiceConnection() {
     return this.voiceConnection;

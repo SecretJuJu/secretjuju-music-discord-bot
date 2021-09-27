@@ -9,6 +9,8 @@ const skipMusicHandler = (msg: Message) => {
 
   const playList = PlayListMap.get(guild.id) as PlayList;
   playList.skipMusic();
+
+  msg.channel.send("Skip!");
 };
 
 export default skipMusicHandler;

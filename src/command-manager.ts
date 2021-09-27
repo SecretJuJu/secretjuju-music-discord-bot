@@ -6,6 +6,7 @@ import {
   deleteMusicHandler,
   clearMusicHandler,
   skipMusicHandler,
+  loopMusicHandler,
 } from "actions";
 import { Message, TextChannel } from "discord.js";
 
@@ -54,6 +55,9 @@ export const commandHandler = (msg: Message) => {
       break;
     case "!!skip":
       skipMusicHandler(msg);
+      break;
+    case "!!loop":
+      loopMusicHandler(msg);
       break;
     case "!!help":
       msg.channel.send(helpMessage);
