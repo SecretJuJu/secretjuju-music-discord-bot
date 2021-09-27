@@ -68,7 +68,7 @@ export class PlayList {
     }
 
     if (!this.isLoop) {
-      this.musicList.splice(currentMusicIndex, 0);
+      this.musicList.splice(currentMusicIndex, 1);
     }
 
     this.streamMusic(nextMusic);
@@ -131,13 +131,27 @@ export class PlayList {
   }
 
   async insertMusic(url: string, order: number) {
+    if (order < 1 || isNaN(order)) {
+      return false;
+    }
+
     const music = await this.getMusicInfo(url);
     if (music === null) {
       return false;
     }
 
-    this.musicList.splice(order - 1, 0, music);
+    this.musicList.splice(order - 1, 1, music);
     return true;
+  }
+
+  deleteMusic(targetList: Array<number>) {
+    const pkList: Array<String> = this.musicList
+      .filter((_, index) => targetList.includes(index))
+      .map((e) => e.pk);
+
+    this.musicList = this.musicList.filter(
+      (element) => !pkList.includes(element.pk)
+    );
   }
 
   getVoiceConnection() {

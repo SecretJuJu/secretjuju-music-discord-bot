@@ -3,6 +3,7 @@ import {
   showPlayListHandler,
   addMusicHandler,
   insertMusicHandler,
+  deleteMusicHandler,
 } from "actions";
 import { Message, TextChannel } from "discord.js";
 
@@ -41,7 +42,8 @@ export const commandHandler = (msg: Message) => {
       insertMusicHandler(msg);
       break;
     case "!!delete":
-      msg.channel.send("this is delete music by number function");
+      deleteMusicHandler(msg);
+      break;
     case "!!show":
       showPlayListHandler(msg);
       break;
