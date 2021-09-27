@@ -35,15 +35,11 @@ export class PlayList {
     if (!currentMusic) {
       return;
     }
-
     this.streamMusic(currentMusic);
   }
 
   playNextMusic(currentMusicPk: string) {
-    const musicList = this.getMusicList();
-
     if (this.musicList.length === 0) {
-      this.isPlaying = false;
       return;
     }
 
@@ -52,7 +48,6 @@ export class PlayList {
     );
 
     if (currentMusicIndex === -1) {
-      this.isPlaying = false;
       return;
     }
 
@@ -99,6 +94,7 @@ export class PlayList {
     });
 
     this.dispatcher.on("close", () => {
+      this.isPlaying = false;
       this.playNextMusic(pk);
     });
   }
@@ -162,7 +158,7 @@ export class PlayList {
     this.dispatcher?.destroy();
   }
   toggleLoop() {
-    this.isLoop = this.isLoop;
+    this.isLoop = !this.isLoop;
     return this.isLoop;
   }
 

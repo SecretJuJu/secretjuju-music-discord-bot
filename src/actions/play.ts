@@ -53,7 +53,6 @@ const playListHandler = async (msg: Message) => {
   const playList: PlayList = PlayListMap.get(guildId) as PlayList;
 
   if (!url) {
-    msg.channel.send("URL을 입력 해 주세요.");
     playList.startPlayList();
     return;
   }
