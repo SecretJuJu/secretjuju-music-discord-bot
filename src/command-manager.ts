@@ -3,7 +3,7 @@ import { Message, TextChannel } from "discord.js";
 import { helpMessage } from "./constants";
 import play from "./actions/play";
 import showPlayList from "actions/show";
-import { PlayList, PlayListMap } from "actions/common/playList";
+import { PlayList, PlayListMap } from "./play-list";
 
 const COMMAND_REGEX: RegExp = /^!![a-zA-Z]+/;
 
@@ -31,7 +31,7 @@ export const commandHandler = (msg: Message) => {
       play(msg);
       break;
     case "!!add":
-      msg.channel.send("this is add music into queue function");
+      // addMusicToPlayList(msg)
       break;
     case "!!insert":
       msg.channel.send("this is insert music into queue function");

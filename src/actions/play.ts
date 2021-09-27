@@ -1,7 +1,7 @@
 import { VoiceConnection } from "discord.js";
 import { Message } from "discord.js";
-import { NoGuildException, NotJoinedVoiceException } from "./common/errors";
-import { PlayList, PlayListMap } from "./common/playList";
+import { NoGuildException, NotJoinedVoiceException } from "../errors";
+import { PlayList, PlayListMap } from "../play-list";
 
 const joinChannel = async (msg: Message) => {
   const guild = msg.guild;
