@@ -28,6 +28,9 @@ export const helpMessage = `
 !!clear
     - 플레이리스트를 비웁니다.
 
+!!skip
+    - 현재 음악을 건너뜁니다.
+
 !!loop
     - 플레이리스트를 반복합니다.
 

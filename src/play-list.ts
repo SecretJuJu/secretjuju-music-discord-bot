@@ -1,4 +1,4 @@
-import { TextChannel, VoiceConnection } from "discord.js";
+import { StreamDispatcher, TextChannel, VoiceConnection } from "discord.js";
 import ytdl, { downloadOptions } from "ytdl-core";
 import { v4 as uuid } from "uuid";
 
@@ -13,18 +13,18 @@ export class PlayList {
     this.guildId = guildId;
     this.isLoop = false;
     this.isPlaying = false;
-    this.currentMusicPk = null;
     this.voiceConnection = null;
     this.lastMessagedChannel = null;
+    this.dispatcher = null;
     this.musicList = [];
   }
   isLoop: boolean;
   private isPlaying: boolean;
-  private currentMusicPk: string | null;
   private voiceConnection: VoiceConnection | null;
   private guildId: string;
   private musicList: Array<IMusic>;
   private lastMessagedChannel: TextChannel | null;
+  private dispatcher: StreamDispatcher | null;
 
   startPlayList() {
     if (this.isPlaying) {
@@ -86,11 +86,11 @@ export class PlayList {
     };
     const stream = ytdl(url, streamOption);
 
-    const dispatcher = this.voiceConnection.play(stream);
+    this.dispatcher = this.voiceConnection.play(stream);
 
     this.isPlaying = true;
 
-    dispatcher.on("error", (err: Error) => {
+    this.dispatcher.on("error", (err: Error) => {
       if (this.lastMessagedChannel !== null) {
         this.lastMessagedChannel.send(
           "에러가 발생하여 해당 음원이 건너뛰기 되었습니다."
@@ -98,7 +98,7 @@ export class PlayList {
       }
     });
 
-    dispatcher.on("close", () => {
+    this.dispatcher.on("close", () => {
       this.playNextMusic(pk);
     });
   }
@@ -156,6 +156,10 @@ export class PlayList {
 
   clearMusicList() {
     this.musicList = [];
+  }
+
+  skipMusic() {
+    this.dispatcher?.destroy();
   }
 
   getVoiceConnection() {
