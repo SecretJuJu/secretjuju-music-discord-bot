@@ -23,10 +23,12 @@ const showPlayListHandler = async (msg: Message) => {
   }
   const guideString: string = musicList
     .map(({ title }, index) => {
-      return `${index + 1}. ${title}`;
+      return `** ${index + 1} **. \`${title}\``;
     })
     .join("\n");
-  return msg.channel.send(guideString);
+  return msg.channel.send(
+    `> ⬇    플레이 리스트 출력    ⬇️\n${guideString} \n\r> ⬆️    플레이 리스트 출력    ⬆️`
+  );
 };
 
 export default showPlayListHandler;
