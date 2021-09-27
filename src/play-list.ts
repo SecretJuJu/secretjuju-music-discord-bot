@@ -154,6 +154,10 @@ export class PlayList {
     );
   }
 
+  clearMusicList() {
+    this.musicList = [];
+  }
+
   getVoiceConnection() {
     return this.voiceConnection;
   }

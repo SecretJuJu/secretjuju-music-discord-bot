@@ -4,6 +4,7 @@ import {
   addMusicHandler,
   insertMusicHandler,
   deleteMusicHandler,
+  clearMusicHandler,
 } from "actions";
 import { Message, TextChannel } from "discord.js";
 
@@ -48,7 +49,7 @@ export const commandHandler = (msg: Message) => {
       showPlayListHandler(msg);
       break;
     case "!!clear":
-      msg.channel.send("this is clear music queue function");
+      clearMusicHandler(msg);
       break;
     case "!!help":
       msg.channel.send(helpMessage);
