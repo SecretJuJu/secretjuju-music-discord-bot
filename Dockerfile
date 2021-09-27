@@ -1,14 +1,13 @@
 FROM node:16
 
-WORKDIR /usr/src/app
+RUN npm install -g yarn --force
+
+WORKDIR /app
 
 COPY package*.json ./
-
-RUN npm install yarn
 RUN yarn
-
+RUN yarn global add pm2
 
 COPY . .
 
-EXPOSE 443
-CMD [ "yarn", "production-start" ]
+CMD ["yarn","production-start"]

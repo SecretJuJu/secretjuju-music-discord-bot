@@ -11,13 +11,15 @@
     "test": "export NODE_ENV=test;cross-env NODE_PATH=src/ ts-mocha -p ./tsconfig.json ./src/app/*/tests.ts",
     "build": "tsc -p .",
     "start": "cross-env NODE_PATH=dist/ node dist/index.js",
-    "production-start": "cross-env NODE_PATH=dist/ pm2 start dist/index.js"
+    "production-start": "cross-env NODE_PATH=dist/ pm2-runtime start dist/index.js"
   },
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
     "@discordjs/voice": "^0.6.0",
     "@types/uuid": "^8.3.1",
     "axios": "^0.21.4",
+    "cross-env": "^7.0.3",
+    "discord-client": "^0.12.2",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "pm2": "^5.1.2",

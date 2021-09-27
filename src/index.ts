@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import client from "discord-client";
+import client from "./discord-client";
 import { isCommand, commandHandler } from "./command-manager";
 
 dotenv.config();
