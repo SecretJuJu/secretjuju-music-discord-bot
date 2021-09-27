@@ -2,6 +2,7 @@ import { VoiceConnection } from "discord.js";
 import { Message } from "discord.js";
 import { NoGuildException, NotJoinedVoiceException } from "../errors";
 import { PlayList, PlayListMap } from "../play-list";
+import commandSplitter from "../utils/command-splitter";
 
 const joinChannel = async (msg: Message) => {
   const guild = msg.guild;
@@ -45,7 +46,7 @@ const playListHandler = async (msg: Message) => {
   }
 
   const guildId = msg.guild?.id as string; // if guild.id is null then error at prePlay function
-  const url = msg.content.split(" ").filter((content) => content !== "")[1];
+  const url = commandSplitter(msg.content)[1];
 
   console.log(`${msg.guild?.name} 에서 ${url} play 요청`);
 
