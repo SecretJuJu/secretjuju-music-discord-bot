@@ -1,4 +1,9 @@
-import { playListHandler, showPlayListHandler, addMusicHandler } from "actions";
+import {
+  playListHandler,
+  showPlayListHandler,
+  addMusicHandler,
+  insertMusicHandler,
+} from "actions";
 import { Message, TextChannel } from "discord.js";
 
 import { helpMessage } from "./constants";
@@ -33,7 +38,7 @@ export const commandHandler = (msg: Message) => {
       addMusicHandler(msg);
       break;
     case "!!insert":
-      msg.channel.send("this is insert music into queue function");
+      insertMusicHandler(msg);
       break;
     case "!!delete":
       msg.channel.send("this is delete music by number function");

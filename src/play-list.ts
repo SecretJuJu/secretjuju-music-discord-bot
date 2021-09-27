@@ -107,18 +107,36 @@ export class PlayList {
     return this.musicList;
   }
 
-  async addMusic(url: string) {
+  async getMusicInfo(url: string): Promise<IMusic | null> {
     let videoInfo;
     try {
       videoInfo = await ytdl.getInfo(url);
     } catch (_) {
-      return false;
+      return null;
     }
 
     const { title } = videoInfo.videoDetails;
     const music: IMusic = { pk: uuid(), url, title };
+    return music;
+  }
+
+  async addMusic(url: string) {
+    const music = await this.getMusicInfo(url);
+    if (music === null) {
+      return false;
+    }
 
     this.musicList.push(music);
+    return true;
+  }
+
+  async insertMusic(url: string, order: number) {
+    const music = await this.getMusicInfo(url);
+    if (music === null) {
+      return false;
+    }
+
+    this.musicList.splice(order - 1, 0, music);
     return true;
   }
 
