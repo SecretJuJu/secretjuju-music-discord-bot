@@ -10,4 +10,4 @@ RUN yarn global add pm2
 
 COPY . .
 
-CMD ["yarn","production-start"]
+CMD ["/bin/sh", "-c", "yarn tsc && pm2-runtime 'yarn start'"]
