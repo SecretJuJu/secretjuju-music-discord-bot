@@ -10,15 +10,19 @@ import {
 } from "actions";
 import { Message, TextChannel } from "discord.js";
 
-import { helpMessage } from "./constants";
-import { PlayList, PlayListMap } from "./play-list";
+import { helpMessage } from "../constants";
+import { PlayList, PlayListMap } from "../play-list";
 
 const COMMAND_REGEX: RegExp = /^!![a-zA-Z]+/;
 
-export const isCommand = (msgContent: string) => {
+const isCommand = (msgContent: string) => {
   return COMMAND_REGEX.test(msgContent);
 };
+
 export const commandHandler = (msg: Message) => {
+  if (!isCommand(msg.content)) {
+    return;
+  }
   const commandType = msg.content.split(" ")[0];
   const guild = msg.guild;
 
